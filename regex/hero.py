@@ -43,6 +43,24 @@ mo10 = bat_regex.search('The adventure of Batman')
 resultado = mo10 is None
 print(f"Sem Correspondencia, minimo 1 vez: {resultado}")
 
+# Correspondencia e repeticoes de um numero de vezes especificas usando chave "{}"
+ha_regex = re.compile(r'(Ha){3}')
+mo11 = ha_regex.search('HaHaHa')
+print(f"Numero especifico de vezes repetidas: {mo11.group()}")
+mo12 = ha_regex.search('Ha')
+result_ha = mo12 is None
+print(f"\"Ha\" Sem correspondencia: {result_ha}")
+
+# Correspondencias greedy(gulosa) e nongreedy(nao gulosa)
+greedy_regex = re.compile(r'(Ha){3,5}')
+mo13 = greedy_regex.search('HaHaHaHaHa')
+print(f"Correspondencia greedy: {mo13.group()}")
+
+nongreedy_regex = re.compile(r'(Ha){3,5}?')
+mo14 = nongreedy_regex.search('HaHaHa')
+print(f"Correspondencia nongreedy: {mo14.group()}")
+
+
 
 
 
