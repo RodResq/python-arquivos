@@ -6,7 +6,8 @@ with open(file_digits, 'r') as file_object:
     for line in lines:
         pi_string += line.strip()
 print(f'{pi_string[:50]}...')
-aniversario = input('Digete sua data de nascimento no formato mmddyy: ')
+
+aniversario = input('Digite sua data de nascimento no formato mmddyy: ')
 if aniversario in pi_string:
     print(f'Seu aniversario esta contido no primeiro milhao do numero pi: {aniversario}')
 else:
