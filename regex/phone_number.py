@@ -19,10 +19,18 @@ mo2 = phone_number_regex2.search('My number is  (415)-555-4242')
 print(f"Codigo de area com parenteses: {mo2.group(1)}")
 print(f"Apenas numero de telefone: {mo2.group(2)}")
 
-
 # Correspodencia opcional com o "?"
 phone_number_regex2 = re.compile(r'(\d\d\d-)?\d\d\d-\d\d\d\d')
 mo3 = phone_number_regex2.search('My number is  415-555-4242')
 print(f"Codigo como opcional, caso positivo: {mo3.group()}")
 mo4 = phone_number_regex2.search('My number is  555-4242')
 print(f"Codigo como opcional, caso negativo: {mo4.group()}")
+
+# Metodo search() retorna somente primeira instancia correspondente a regex
+phone_number_regex3 = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo5 = phone_number_regex3.search('cell: 415-555-9999 Work: 212-555-0000')
+print(f"Retorna somente a primeira instancia encontrada: {mo5.group()}")
+
+phone_number_regex4 = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo6_list = phone_number_regex3.findall('cell: 415-555-9999 Work: 212-555-0000')
+print(f"Metodo findall() retorna uma lista correspondente a regex: {mo6_list}")
