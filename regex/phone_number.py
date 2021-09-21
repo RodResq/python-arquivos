@@ -18,3 +18,11 @@ phone_number_regex2 = re.compile(r'(\(\d\d\d\))-(\d\d\d-\d\d\d\d)')
 mo2 = phone_number_regex2.search('My number is  (415)-555-4242')
 print(f"Codigo de area com parenteses: {mo2.group(1)}")
 print(f"Apenas numero de telefone: {mo2.group(2)}")
+
+
+# Correspodencia opcional com o "?"
+phone_number_regex2 = re.compile(r'(\d\d\d-)?\d\d\d-\d\d\d\d')
+mo3 = phone_number_regex2.search('My number is  415-555-4242')
+print(f"Codigo como opcional, caso positivo: {mo3.group()}")
+mo4 = phone_number_regex2.search('My number is  555-4242')
+print(f"Codigo como opcional, caso negativo: {mo4.group()}")
