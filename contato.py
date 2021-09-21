@@ -27,3 +27,4 @@ class Contato():
     @telefone.setter
     def telefone(self, telefone):
         self.__telefone = telefone
+
