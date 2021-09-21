@@ -35,3 +35,18 @@ def buscar_contato(email_contato):
                     return -1
     except FileNotFoundError:
         print("Arquivo nao encontrado")
+
+
+def buscar_contato_email(email_contato):
+    try:
+        linha = buscar_contato(email_contato)
+        if linha >= 0:
+            with open("contatos.txt") as arquivo:
+                lista_contatos = arquivo.readlines()
+                dados = lista_contatos[linha].split('-')
+                contato_encontrado = Contato(dados[0][:-1], dados[1][1:-1], dados[2][1:-1])
+            return contato_encontrado
+        else:
+            return -1
+    except FileNotFoundError:
+        print("Arquivo nao encontrado")
