@@ -28,7 +28,6 @@ while(opcao_menu != 0):
 
     if opcao_menu == 2:
         try:
-
             with open("contatos.txt", "a") as arquivo:
                 nome_contato = input("Digite o nome do contato: ")
                 email_contato = input("Digite o email do contato: ")
@@ -42,17 +41,27 @@ while(opcao_menu != 0):
             if 'arquivo' in locals():
                 arquivo.close()
         # lista_contatos.append(contato_novo)
-    # elif opcao_menu == 3:
-    #     contato_remover = input("Digite o email do contato que deseja remover: ")
-    #     contato_encontrado = False
-    #     for i in lista_contatos:
-    #         if i.email == contato_remover:
-    #             lista_contatos.remove(i)
-    #             print("Contato removido")
-    #             contato_encontrado = True
-    #             break
-    #     if not contato_encontrado:
-    #         print("Contato não encontrado")
+
+    elif opcao_menu == 3:
+        try:
+            contato_remover = input("Digite o email do contato que deseja remover: ")
+            contato_encontrado = False
+            nova_lista_contato = list()
+            with open("contatos.txt", "r") as contato:
+                lista_contatos = contato.readlines()
+                for i in lista_contatos:
+                    dados = i.split("-")
+                    if dados[1][1:-1] != contato_remover:
+                        nova_lista_contato.append(f"{dados[0]}{dados[1]}{dados[2]}")
+                    else:
+                        contato_encontrado = True
+                if not contato_encontrado:
+                    print("Contato não encontrado")
+            with open("contatos.txt", "w") as arquivo:
+                arquivo.writelines(nova_lista_contato)
+        except FileNotFoundError:
+            print("Arquivo nao encontrado")
+
     elif opcao_menu == 4:
         try:
             contato_buscar = input("Digite o email do contato que deseja buscar: ")
