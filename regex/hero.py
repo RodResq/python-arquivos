@@ -20,4 +20,31 @@ print(f"The men: {mo4.group()}")
 mo5 = bat_regex.search('The adventure of Batwoman')
 print(f"The woman: {mo5.group()}")
 
+# Correspondencia de zero ou mais vezes
+bat_regex = re.compile(r'Bat(wo)*man')
+mo5 = bat_regex.search('The adventure of Batman')
+print(f"The men,  Correspondencia de zero vezes: {mo5.group()}")
+
+mo7 = bat_regex.search('The adventure of Batwoman')
+print(f"The woman, Correspondencia 1 veze: {mo7.group()}")
+
+mo6 = bat_regex.search('The adventure of Batwowowowowoman')
+print(f"The woman, Correspondencia 4 vezes: {mo6.group()}")
+
+# Correspondencia de uma ou mais vezes
+bat_regex = re.compile(r'Bat(wo)+man')
+mo8 = bat_regex.search('The adventure of Batwoman')
+print(f"The men,  Correspondencia de uma vez: {mo8.group()}")
+
+mo9 = bat_regex.search('The adventure of Batwowowowowoman')
+print(f"The woman, Correspondencia 4 vezes: {mo9.group()}")
+
+mo10 = bat_regex.search('The adventure of Batman')
+resultado = mo10 is None
+print(f"Sem Correspondencia, minimo 1 vez: {resultado}")
+
+
+
+
+
 
