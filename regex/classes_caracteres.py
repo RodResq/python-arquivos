@@ -36,3 +36,23 @@ mo5 = start_end_number.search('1234xyz5647890')
 print(f"Nao Correspondencia comecando e terminando com numero(letra no meio): {mo5}")
 mo6 = start_end_number.search('1234   5647890')
 print(f"Nao Correspondencia comecando e terminando com numero(spaco no meio): {mo6}")
+
+# Caracter Corringa
+corringa_regex = re.compile(r'.at')
+at_regex_list = corringa_regex.findall('The cat in the hat sat on the flat mat.')
+print(f"Correspondencia com carcter coringa (.): {at_regex_list}")
+
+# Correspondendo tudo usando ponto e asterisco (.*)
+name_regex = re.compile(r'First Name: (.*) Last Name: (.*)')
+mo7 = name_regex.search('First Name: Bob Last Name: Lee')
+print(f"Correspondendo tudo usando ponto e asterisco (.*) grupo 1: {mo7.group(1)}")
+print(f"Correspondendo tudo usando ponto e asterisco (.*) grupo 2: {mo7.group(2)}")
+
+# Correspondendo ao caracter quebra de linha com re.DOTALL
+no_new_line_regex = re.compile(r'.*')
+mo8 = no_new_line_regex.search('Server the public trust. \nProtect the innocent.\nEphold the law').group()
+print(f"Correspondendo ao caracter quebra de linha sem re.DOTALL: {mo8}")
+
+no_new_line_regex = re.compile(r'.*', re.DOTALL)
+mo9 = no_new_line_regex.search('Server the public trust. \nProtect the innocent.\nEphold the law').group()
+print(f"Correspondendo ao caracter quebra de linha com re.DOTALL: {mo9}")
