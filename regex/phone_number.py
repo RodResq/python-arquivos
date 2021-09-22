@@ -34,3 +34,8 @@ print(f"Retorna somente a primeira instancia encontrada: {mo5.group()}")
 phone_number_regex4 = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
 mo6_list = phone_number_regex3.findall('cell: 415-555-9999 Work: 212-555-0000')
 print(f"Metodo findall() retorna uma lista correspondente a regex: {mo6_list}")
+
+# Metodo findall() com grupo na regex e retonado uma lista de tuplas
+phone_number_regex_tupla = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)') # com grupos
+mo7_list = phone_number_regex_tupla.findall('cell: 415-555-9999 Work: 212-555-0000')
+print(f"Metodo findall() retorna uma lista de tuplas correspondente a regex: {mo7_list}")
